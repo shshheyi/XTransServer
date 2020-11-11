@@ -1,6 +1,7 @@
 FROM centos:6 AS builder
 MAINTAINER liuweikai "vicliu@outlook.com"
 
+#在centos6环境编译库文件
 WORKDIR /build
 RUN yum clean all \
     && yum update -y \
@@ -11,6 +12,7 @@ RUN yum clean all \
     && make libXTransServerMySql \
     && make clean \
     && cp lib64/libXTransServerMySql.so /lib64/
+
 
 #业务代码编译
 #业务代码拷贝到容器
